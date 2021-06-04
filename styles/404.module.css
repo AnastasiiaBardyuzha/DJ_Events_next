@@ -1,0 +1,12 @@
+.error {
+  text-align: center;
+  margin: 100px 0 200px;
+}
+
+.error__title {
+  font-size: 50px;
+}
+
+.error__title svg {
+  margin-right: 10px;
+}
