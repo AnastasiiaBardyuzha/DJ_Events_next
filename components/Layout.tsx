@@ -1,7 +1,9 @@
 import React, { FC } from 'react';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
+import ShowCase from 'components/ShowCase';
 import styles from '../styles/Layout.module.css';
 
 interface Props {
@@ -16,7 +18,10 @@ const Layout: FC<Props> = ({
   description = 'Find the latest DJ and other musical events',
   keywords = 'music, dj, edm, events',
   children,
-}) => (
+}) => {
+  const { pathname } = useRouter();
+
+  return (
     <div>
       <Head>
         <title>{title}</title>
@@ -26,6 +31,8 @@ const Layout: FC<Props> = ({
 
       <Header />
 
+      {pathname === '/' && <ShowCase />}
+
       <div className={styles.container}>
         {children}
       </div>
@@ -33,5 +40,6 @@ const Layout: FC<Props> = ({
       <Footer />
     </div>
   );
+};
 
 export default Layout;
