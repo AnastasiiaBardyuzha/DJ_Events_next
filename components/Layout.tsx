@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC, ReactNode } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Header from 'components/Header';
@@ -10,7 +10,7 @@ interface Props {
   title?: string;
   description?: string;
   keywords?: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 const Layout: FC<Props> = ({

@@ -1,6 +1,14 @@
-import Layout from 'components/Layout'; 
+import { FC } from 'react';
+import Layout from 'components/Layout';
+import axiosInstance from 'api/index';
+import { EventType } from 'constants_types/types';
 
-export default function Home() {
+interface Props {
+  events?: Array<EventType> | []
+}
+
+ const Home: FC<Props> = ({ events }) => {
+   console.log(events);
   return (
     <div>
       <Layout>
@@ -8,4 +16,17 @@ export default function Home() {
       </Layout>  
     </div>
   );
-}
+};
+
+export default Home;
+
+export const getServerSideProps = async () => {
+  const res = await axiosInstance('/api/events');
+  const data = await res.data;
+  
+  return {
+    props: {
+      events: data,
+    },
+  };
+};
