@@ -1,4 +1,5 @@
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
+import { NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Header from 'components/Header';
@@ -13,7 +14,7 @@ interface Props {
   children: ReactNode;
 }
 
-const Layout: FC<Props> = ({
+const Layout: NextPage<Props> = ({
   title = 'DJ Events',
   description = 'Find the latest DJ and other musical events',
   keywords = 'music, dj, edm, events',

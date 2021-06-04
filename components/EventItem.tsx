@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { NextPage } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { EventType } from 'constants_types/types';
@@ -8,7 +8,7 @@ interface Props {
   eventItem: EventType
 }
 
-const EventItem: FC<Props> = ({ eventItem }) => (
+const EventItem: NextPage<Props> = ({ eventItem }) => (
     <div className={styles.event}>
       <div className={styles.img}>
         <Image
