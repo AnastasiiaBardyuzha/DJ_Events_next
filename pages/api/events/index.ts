@@ -1,6 +1,8 @@
+import type { NextApiRequest, NextApiResponse } from 'next';
+
 const { events } = require('./data.json');
 
-export default (req: any, res: any) => {
+export default (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'GET') {
     res.status(200).json(events);
   } else {

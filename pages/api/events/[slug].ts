@@ -1,8 +1,9 @@
+import type { NextApiRequest, NextApiResponse } from 'next';
 import { EventType } from 'constants_types/types';
 
 const { events } = require('./data.json');
 
-export default (req: any, res: any) => {
+export default (req: NextApiRequest, res: NextApiResponse) => {
   const evt = events.filter((ev: EventType) => ev.slug === req.query.slug);
 
   if (req.method === 'GET') {
