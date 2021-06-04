@@ -1,9 +1,25 @@
-import Layout from 'components/Layout'; 
+import { FC } from 'react';
+import EventsList from 'components/EventsList';
+import axiosInstance from 'api/index';
+import { EventType } from 'constants_types/types';
 
-const Events = () => (
-    <Layout title="Events info">
-      <h1>My events</h1>
-    </Layout>
+interface Props {
+  events?: Array<EventType>
+}
+
+ const Events: FC<Props> = ({ events }) => (
+    <EventsList events={events} />
   );
 
 export default Events;
+
+export const getServerSideProps = async () => {
+  const res = await axiosInstance('/api/events');
+  const data = await res.data;
+  
+  return {
+    props: {
+      events: data,
+    },
+  };
+};

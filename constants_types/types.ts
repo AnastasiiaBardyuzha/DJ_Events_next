@@ -1,12 +1,12 @@
 export interface EventType {
-  id: String,
-  name: String,
-  slug: String,
-  venue: String,
-  address: String,
-  performers: String,
-  date: String,
-  time: String,
-  description: String,
-  image: String
+  id: string,
+  name: string,
+  slug: string,
+  venue: string,
+  address: string,
+  performers: string,
+  date: string,
+  time: string,
+  description: string,
+  image: string
 }

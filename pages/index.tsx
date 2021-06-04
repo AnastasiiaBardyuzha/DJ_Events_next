@@ -1,22 +1,15 @@
 import { FC } from 'react';
-import Layout from 'components/Layout';
+import EventsList from 'components/EventsList';
 import axiosInstance from 'api/index';
 import { EventType } from 'constants_types/types';
 
 interface Props {
-  events?: Array<EventType> | []
+  events?: Array<EventType>
 }
 
- const Home: FC<Props> = ({ events }) => {
-   console.log(events);
-  return (
-    <div>
-      <Layout>
-        <h1>Home</h1>
-      </Layout>  
-    </div>
+ const Home: FC<Props> = ({ events }) => (
+    <EventsList events={events} />
   );
-};
 
 export default Home;
 
@@ -26,7 +19,7 @@ export const getServerSideProps = async () => {
   
   return {
     props: {
-      events: data,
+      events: data.slice(0, 3),
     },
   };
 };

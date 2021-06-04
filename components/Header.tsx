@@ -13,7 +13,7 @@ const Header = () => (
         <ul>
           <li>
             <Link href="/events">
-              <a>Event</a>
+              <a>Events</a>
             </Link>
           </li>
         </ul>
