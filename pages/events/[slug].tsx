@@ -34,13 +34,16 @@ const EventPage: NextPage<Props> = ({ event }) => {
         </div>
 
         <span>
-          {event.date} at {event.time}
+          {new Date(event.date).toLocaleDateString('en-US')} at {event.time}
         </span>
         <h1>{event.name}</h1>
 
         <div className={styles.image}>
           <Image
-            src={event.image || '/images/event-default.png'}
+            src={
+              event.image[0].formats.large.url
+              || '/images/event-default.png'
+            }
             width={960}
             height={600}
           />
@@ -72,7 +75,7 @@ interface ServerSideProps {
 }
 
 export const getServerSideProps = async ({ query: { slug } }: ServerSideProps) => {
-  const res = await axiosInstance(`/api/events/${slug}`);
+  const res = await axiosInstance(`/events/?slug=${slug}`);
   const data = await res.data;
 
   return {

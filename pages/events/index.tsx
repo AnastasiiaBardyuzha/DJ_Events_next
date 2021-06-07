@@ -18,12 +18,12 @@ interface Props {
 export default Events;
 
 export const getServerSideProps = async () => {
-  const res = await axiosInstance('/api/events');
-  const data = await res.data;
+  const res = await axiosInstance('/events?_sort=date:ASC');
+  const events = await res.data;
   
   return {
     props: {
-      events: data,
+      events,
     },
   };
 };
