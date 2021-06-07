@@ -12,6 +12,14 @@ interface Props {
   event: EventType
 }
 
+interface QuerySlugType {
+  slug: string | number
+}
+
+interface ServerSideProps {
+  query: QuerySlugType
+}
+
 const EventPage: NextPage<Props> = ({ event }) => {
   const deleteEvent = (e: React.MouseEvent) => {
     console.log('delete');
@@ -65,14 +73,6 @@ const EventPage: NextPage<Props> = ({ event }) => {
 };
 
 export default EventPage;
-
-interface QuerySlugType {
-  slug: string | number
-}
-
-interface ServerSideProps {
-  query: QuerySlugType
-}
 
 export const getServerSideProps = async ({ query: { slug } }: ServerSideProps) => {
   const res = await axiosInstance(`/events/?slug=${slug}`);

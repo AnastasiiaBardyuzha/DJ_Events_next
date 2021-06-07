@@ -11,6 +11,14 @@ interface Props {
   events?: Array<EventType>
 }
 
+interface QueryTermType {
+  term: string
+}
+
+interface ServerSideProps {
+  query: QueryTermType
+}
+
  const SearchPage: NextPage<Props> = ({ events }) => {
   const { query } = useRouter();
 
@@ -26,14 +34,6 @@ interface Props {
 };
 
 export default SearchPage;
-
-interface QueryTermType {
-  term: string
-}
-
-interface ServerSideProps {
-  query: QueryTermType
-}
 
 export const getServerSideProps = async ({ query: { term } }: ServerSideProps) => {
 
