@@ -7,8 +7,7 @@ const configuration = {
   baseURL: API_URL,
   headers: {
     'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-    'Content-Type': 'text/csv',
+    'Content-Type': 'application/json',
   },
   timeout: 45000,
   responseType: 'json',

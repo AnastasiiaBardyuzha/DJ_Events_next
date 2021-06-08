@@ -49,7 +49,7 @@ const EventPage: NextPage<Props> = ({ event }) => {
         <div className={styles.image}>
           <Image
             src={
-              event.image[0].formats.large.url
+              event.image[0]?.formats?.large?.url
               || '/images/event-default.png'
             }
             width={960}
