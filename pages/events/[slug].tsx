@@ -36,7 +36,10 @@ const EventPage: NextPage<Props> = ({ event }) => {
               <FaPencilAlt /> Edit Event
             </a>
           </Link>
-          <a href='#' className={styles.delete} onClick={deleteEvent}>
+          <a
+            href='#'
+            className={styles.delete}
+            onClick={deleteEvent}>
             <FaTimes /> Delete Event
           </a>
         </div>
@@ -74,7 +77,9 @@ const EventPage: NextPage<Props> = ({ event }) => {
 
 export default EventPage;
 
-export const getServerSideProps = async ({ query: { slug } }: ServerSideProps) => {
+export const getServerSideProps = async (
+  { query: { slug } }: ServerSideProps,
+) => {
   const res = await axiosInstance(`/events/?slug=${slug}`);
   const data = await res.data;
 

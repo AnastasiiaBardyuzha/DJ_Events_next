@@ -3,18 +3,19 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { notifyError } from 'helper/notify';
 import Layout from 'components/Layout';
-import styles from 'styles/Form.module.css';
 import axiosInstance from 'api';
-// import { API_URL } from 'constants_types/constants';
+import { addEventStructure } from 'utils/structures';
+import styles from 'styles/Form.module.css';
 
 interface FormValues {
-  name: string,
-  venue: string,
-  performers: string,
-  description: string,
-  date: string,
-  time: string,
-  address: string,
+  [key: string]: string,
+}
+
+interface StructureItemType {
+  label: string,
+  nameItem: string,
+  id: string,
+  type: string,
 }
 
 const AddEvent = () => {
@@ -46,7 +47,6 @@ const AddEvent = () => {
     try {
       const res = await axiosInstance.post('/events', { ...values});
       const eventItem = res.data;
-      console.log(eventItem);
       
       router.push(`/events/${eventItem.slug}`);
     } catch(er) {     
@@ -54,7 +54,9 @@ const AddEvent = () => {
     };
   };
 
-  const handleInputChange: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement> = (event) => {
+  const handleInputChange: 
+    ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement> 
+  = (event) => {
     const { name, value } = event.target;
     setValues({
       ...values,
@@ -69,80 +71,24 @@ const AddEvent = () => {
       </Link>
       <h1>Add Event</h1>
 
-      <form onSubmit={handleSubmit} className={styles.form}>
+      <form
+        onSubmit={handleSubmit}
+        className={styles.form}>
         <div className={styles.grid}>
-          <div>
-            <label htmlFor='name'>
-              Event Name
+          {addEventStructure.map((event: StructureItemType) => (
+            <div key={event.id}>
+            <label htmlFor={event.nameItem}>
+              {event.label}
               <input
-                type='text'
-                id='name'
-                name='name'
-                value={values.name}
+                type={event.type}
+                id={event.id}
+                name={event.nameItem}
+                value={values[event.nameItem]}
                 onChange={handleInputChange}
               />
             </label>
           </div>
-          <div>
-            <label htmlFor='performers'>
-              Performers
-              <input
-                type='text'
-                name='performers'
-                id='performers'
-                value={values.performers}
-                onChange={handleInputChange}
-              />
-            </label>
-          </div>
-          <div>
-            <label htmlFor='venue'>
-              Venue
-              <input
-                type='text'
-                name='venue'
-                id='venue'
-                value={values.venue}
-                onChange={handleInputChange}
-              />
-            </label>
-          </div>
-          <div>
-            <label htmlFor='address'>
-              Address
-              <input
-                type='text'
-                name='address'
-                id='address'
-                value={values.address}
-                onChange={handleInputChange}
-              />
-            </label>
-          </div>
-          <div>
-            <label htmlFor='date'>
-              Date
-              <input
-                type='date'
-                name='date'
-                id='date'
-                value={values.date}
-                onChange={handleInputChange}
-              />
-            </label>
-          </div>
-          <div>
-            <label htmlFor='time'>
-              Time
-              <input
-                type='text'
-                name='time'
-                id='time'
-                value={values.time}
-                onChange={handleInputChange}
-              />
-            </label>
-          </div>
+          ))}
         </div>
 
         <div>
@@ -157,7 +103,11 @@ const AddEvent = () => {
           </label>
         </div>
 
-        <input type='submit' value='Add Event' className='btn' />
+        <input
+          type='submit'
+          value='Add Event'
+          className='btn'
+        />
       </form>
     </Layout>
   );
