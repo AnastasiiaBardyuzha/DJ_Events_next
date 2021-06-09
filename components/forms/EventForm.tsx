@@ -3,13 +3,9 @@ import { NextPage } from 'next';
 import moment from 'moment';
 import { notifyError } from 'helper/notify';
 import { addEventStructure } from 'utils/structures';
-import { EventType } from 'constants_types/types';
+import { EventType, FormValues } from 'constants_types/types';
 import { actType } from 'constants_types/constants';
 import styles from 'styles/Form.module.css';
-
-interface FormValues {
-  [key: string]: string,
-}
 
 interface Props {
   eventItem?: EventType,

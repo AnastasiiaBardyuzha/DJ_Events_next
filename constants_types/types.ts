@@ -43,3 +43,7 @@ export interface EventType {
   description: string,
   image: Array<Image>
 }
+
+export interface FormValues {
+  [key: string]: string,
+}

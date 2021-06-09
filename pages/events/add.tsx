@@ -4,10 +4,7 @@ import { notifyError } from 'helper/notify';
 import Layout from 'components/Layout';
 import EventForm from 'components/forms/EventForm'; 
 import axiosInstance from 'api';
-
-interface FormValues {
-  [key: string]: string,
-}
+import { FormValues } from 'constants_types/types';
 
 const AddEvent = () => {
 

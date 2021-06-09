@@ -5,14 +5,10 @@ import EventForm from 'components/forms/EventForm';
 import Layout from 'components/Layout';
 import { notifyError, notifySuccess } from 'helper/notify';
 import axiosInstance from 'api';
-import { EventType } from 'constants_types/types';
+import { EventType, FormValues } from 'constants_types/types';
 
 interface Props {
   eventItem: EventType
-}
-
-interface FormValues {
-  [key: string]: string,
 }
 
 interface QuerySlugType {
