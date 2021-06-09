@@ -1,10 +1,12 @@
 import React from 'react';
 import { NextPage } from 'next';
-import { FaPencilAlt, FaTimes } from 'react-icons/fa';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
+import { FaPencilAlt, FaTimes } from 'react-icons/fa';
 import Layout from 'components/Layout';
 import axiosInstance from 'api/index';
+import { notifyError, notifySuccess } from 'helper/notify';
 import { EventType } from 'constants_types/types';
 import styles from 'styles/Event.module.css';
 
@@ -21,10 +23,19 @@ interface ServerSideProps {
 }
 
 const EventPage: NextPage<Props> = ({ event }) => {
-  const deleteEvent = (e: React.MouseEvent) => {
-    console.log('delete');
-    console.log(e);
-    
+  const router = useRouter();
+
+  const deleteEvent = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (!confirm('Are you sure?')) return;
+
+    try {
+      await axiosInstance.delete(`/events/${event.id}`);
+      notifySuccess('Successfully delete');
+      router.push('/events');
+    } catch (error) {
+      notifyError();
+    }
   };
 
   return (
