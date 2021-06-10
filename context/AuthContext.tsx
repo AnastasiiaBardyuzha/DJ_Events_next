@@ -7,7 +7,7 @@ import {
 } from 'react';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
-import axiosInstance from 'api/index';
+import { authAxiosInstance } from 'api/index';
 import { FormValues } from 'constants_types/types';
 
 interface Props {
@@ -50,8 +50,16 @@ const AuthProvider: NextPage<Props> = ({ children }) => {
   };
 
   // Login user
-  const login =  ({ email:identifier, password }: FormValues) => {
-    console.log({ identifier, password });
+  const login =  async ({ email:identifier, password }: FormValues) => {
+    try {
+      const res = await authAxiosInstance.post('/api/login', {identifier, password});
+
+      console.log('loginres: ', res.data);
+      
+    }catch (er) {
+      console.log(er);
+      
+    }
   };
 
   // Logout user
