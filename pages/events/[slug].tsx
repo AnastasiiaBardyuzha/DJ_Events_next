@@ -1,4 +1,4 @@
-import React from 'react';
+import { MouseEvent } from 'react';
 import { NextPage } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -25,7 +25,7 @@ interface ServerSideProps {
 const EventPage: NextPage<Props> = ({ event }) => {
   const router = useRouter();
 
-  const deleteEvent = async (e: React.MouseEvent) => {
+  const deleteEvent = async (e: MouseEvent) => {
     e.preventDefault();
     if (!confirm('Are you sure?')) return;
 

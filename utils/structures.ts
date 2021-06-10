@@ -33,18 +33,38 @@ export const date = {
   type: 'date',
 };
 
-export const CPF = {
-  label: 'CPF',
-  nameItem: 'CPF',
-  id: 'CPF',
-  type: 'text',
-  placeholder: '',
-};
-
 export const time = {
   label: 'Time',
   nameItem: 'time',
   id: 'time',
+  type: 'text',
+};
+
+export const password = {
+  label: 'Password',
+  nameItem: 'password',
+  id: 'password',
+  type: 'password',
+};
+
+export const confirmPassword = {
+  label: 'Confirm Password',
+  nameItem: 'confirmPassword',
+  id: 'confirmPassword',
+  type: 'password',
+};
+
+export const email = {
+  label: 'Email Address',
+  nameItem: 'email',
+  id: 'email',
+  type: 'email',
+};
+
+export const username = {
+  label: 'Username',
+  nameItem: 'username',
+  id: 'username',
   type: 'text',
 };
 
@@ -55,4 +75,16 @@ export const addEventStructure = [
   address,
   date,
   time,
+];
+
+export const loginStructure = [
+  email,
+  password,
+];
+
+export const registerStructure = [
+  username,
+  email,
+  password,
+  confirmPassword,
 ];
