@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { FaImage } from 'react-icons/fa';
 import EventForm from 'components/forms/EventForm'; 
 import Layout from 'components/Layout';
+import ImageUpload from 'components/ImageUpload';
 import Modal from 'components/Modal';
 import { notifyError, notifySuccess } from 'helper/notify';
 import axiosInstance from 'api';
@@ -25,7 +26,8 @@ interface ServerSideProps {
 
 const EditEvent: NextPage<Props> = ({ eventItem }) => {
   const [imagePreview, setImagePreview] = useState<string | null>(
-    eventItem?.image[0]?.formats?.thumbnail?.url || null,
+    eventItem?.image[eventItem.image.length - 1]?.formats?.thumbnail?.url
+    || null,
   );
   const [showModal, setShowModal] = useState<boolean>(false);
 
@@ -41,6 +43,16 @@ const EditEvent: NextPage<Props> = ({ eventItem }) => {
     };
   };
 
+  const imageUploaded = async () => {
+    const res = await axiosInstance(`/events/${eventItem.id}`);
+    const { data } = res;
+
+    setImagePreview(
+      data.image[data.image.length - 1].formats.thumbnail.url,
+    );
+    setShowModal(false);
+  };
+
   return (
     <Layout title="Edit Event">
       <Link href='/events'>
@@ -48,7 +60,11 @@ const EditEvent: NextPage<Props> = ({ eventItem }) => {
       </Link>
       <h1>Edit Event</h1>
 
-      <EventForm eventItem={eventItem} handleSubmit={handleSubmit} act="update" />
+      <EventForm
+        eventItem={eventItem}
+        handleSubmit={handleSubmit}
+        act="update"
+      />
 
       <h2>Even Image</h2>
       {imagePreview ? 
@@ -81,7 +97,10 @@ const EditEvent: NextPage<Props> = ({ eventItem }) => {
         show={showModal}
         onClose={() => setShowModal(false)}
         >
-        IMAGE UPLOAD
+        <ImageUpload
+          imageUploaded={imageUploaded}
+          evtId={eventItem.id}
+        />
       </Modal>
 
     </Layout>

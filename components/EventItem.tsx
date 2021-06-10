@@ -13,7 +13,7 @@ const EventItem: NextPage<Props> = ({ eventItem }) => (
       <div className={styles.img}>
         <Image
           src={
-            eventItem.image[0]?.formats?.thumbnail?.url
+            eventItem.image[eventItem.image.length - 1]?.formats?.thumbnail?.url
             || '/images/event-default.png'
           }
           width={170}
