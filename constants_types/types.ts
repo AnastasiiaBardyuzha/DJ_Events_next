@@ -47,3 +47,8 @@ export interface EventType {
 export interface FormValues {
   [key: string]: string,
 }
+
+export interface LoginType {
+  email: '',
+  password: ''
+}

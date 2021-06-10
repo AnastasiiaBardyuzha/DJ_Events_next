@@ -9,12 +9,20 @@ import Link from 'next/link';
 import { FaUser } from 'react-icons/fa';
 import Layout from 'components/Layout';
 import RegisterForm from 'components/forms/RegisterForm'; 
+import { useAuth } from 'context/AuthContext'; 
 import { FormValues } from 'constants_types/types';
 import styles from 'styles/AuthForm.module.css';
 
 const RegisterPage = () => {
-  const handleSubmit = (values: FormValues) => {
-    console.log(values);
+  const { register, error } = useAuth();
+  const handleSubmit = async (values: FormValues) => {
+    // console.log(values);
+    try {
+      await register(values);
+    } catch(er){
+      console.log(error);  
+    }
+    
   };
 
   return (

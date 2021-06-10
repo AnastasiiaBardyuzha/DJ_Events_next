@@ -2,20 +2,26 @@
 import {
   useState,
   useEffect,
-  useContext,
   SyntheticEvent,
   // ChangeEventHandler,
 } from 'react';
 import Link from 'next/link';
 import { FaUser } from 'react-icons/fa';
 import Layout from 'components/Layout';
-import LoginForm from 'components/forms/LoginForm'; 
+import LoginForm from 'components/forms/LoginForm';
+import { useAuth } from 'context/AuthContext'; 
 import { FormValues } from 'constants_types/types';
 import styles from 'styles/AuthForm.module.css';
 
 const LoginPage = () => {
-  const handleSubmit = (values: FormValues) => {
-    console.log(values);
+  const { login, error } = useAuth();
+
+  const handleSubmit = async (values: FormValues) => {
+    try {
+      await login(values);
+    } catch (er) {
+      console.log(error);
+    }
   };
 
   return (
