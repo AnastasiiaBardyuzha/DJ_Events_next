@@ -92,11 +92,10 @@ export const getServerSideProps = async (
   { query: { slug } }: ServerSideProps,
 ) => {
   const res = await axiosInstance(`/events/?slug=${slug}`);
-  const data = await res.data;
 
   return {
     props: {
-      event: data[0],
+      event: res.data[0],
     },
   };
 };

@@ -25,11 +25,10 @@ export default Home;
 
 export const getServerSideProps = async () => {
   const res = await axiosInstance('/events?_sort=date:ASC&_limit=3');
-  const events = await res.data;
   
   return {
     props: {
-      events,
+      events: res.data,
     },
   };
 };

@@ -113,11 +113,10 @@ export const getServerSideProps = async (
   { query: { id } }: ServerSideProps,
 ) => {
   const res = await axiosInstance(`/events/?id=${id}`);
-  const data = await res.data;
 
   return {
     props: {
-      eventItem: data[0],
+      eventItem: res.data[0],
     },
   };
 };

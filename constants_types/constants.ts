@@ -1,5 +1,3 @@
-/* eslint-disable import/prefer-default-export */
-
 export const API_URL = process.env.NEXT_APP_BACKEND_URL || 'http://localhost:1337';
 
 interface actionType {
@@ -11,3 +9,5 @@ export const actType: actionType = Object.freeze({
   edit: 'Edit',
   update: 'Update',
 });
+
+export const PER_PAGE = 4;

@@ -8,7 +8,7 @@ interface Props {
 
  const EventsList: NextPage<Props> = ({ events }) => (
     <>
-      {!events && <h3>No events to show</h3>}
+      {!events?.length && <h3>No events to show</h3>}
       {events?.map((event: EventType) => (
           <EventItem eventItem={event} key={event.id} />
         ),

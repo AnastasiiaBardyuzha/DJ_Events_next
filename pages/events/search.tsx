@@ -48,11 +48,10 @@ export const getServerSideProps = async ({ query: { term } }: ServerSideProps) =
     },
   });
   const res = await axiosInstance(`/events?${querySearch}`);
-  const events = await res.data;
   
   return {
     props: {
-      events,
+      events: res.data,
     },
   };
 };
