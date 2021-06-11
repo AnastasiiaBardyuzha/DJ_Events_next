@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { NextPage } from 'next';
+import { NextPage, NextApiRequest } from 'next';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -9,7 +9,7 @@ import Layout from 'components/Layout';
 import ImageUpload from 'components/ImageUpload';
 import Modal from 'components/Modal';
 import { notifyError, notifySuccess } from 'helper/notify';
-import axiosInstance from 'api';
+import axiosInstance from 'api/index';
 import { EventType, FormValues } from 'constants_types/types';
 
 interface Props {
@@ -21,7 +21,8 @@ interface QuerySlugType {
 }
 
 interface ServerSideProps {
-  query: QuerySlugType
+  query: QuerySlugType,
+  req: NextApiRequest
 }
 
 const EditEvent: NextPage<Props> = ({ eventItem }) => {
@@ -110,10 +111,14 @@ const EditEvent: NextPage<Props> = ({ eventItem }) => {
 export default EditEvent;
 
 export const getServerSideProps = async (
-  { query: { id } }: ServerSideProps,
+  {
+    query: { id },
+    req,
+  }: ServerSideProps,
 ) => {
   const res = await axiosInstance(`/events/?id=${id}`);
-
+  console.log('kjhfdksjhfkdj: ', req.headers.cookie);
+  
   return {
     props: {
       eventItem: res.data[0],

@@ -44,6 +44,8 @@ const AuthProvider: NextPage<Props> = ({ children }) => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
 
+  const router = useRouter();
+
   // Register user
   const register = (userInfo: UserType) => {
     console.log(userInfo);
@@ -57,6 +59,7 @@ const AuthProvider: NextPage<Props> = ({ children }) => {
       );
 
       setUser(res.data.user);
+      router.push('/account/dashboard');
     } catch (er) {
       const {data} = er.response;;
 
@@ -71,11 +74,20 @@ const AuthProvider: NextPage<Props> = ({ children }) => {
   };
 
   // Check if user is logged in
-  const checkUserLoggedIn =  (userInfo: UserType) => {
-    console.log('Check');
-    console.log(userInfo);
-    
+  const checkUserLoggedIn =  async () => {
+    try {
+      const res = await authAxiosInstance(
+        '/api/user');
+ 
+      setUser(res.data.user);
+    } catch (er) {
+      setUser(null);
+    }
   };
+
+  useEffect(() => {
+    checkUserLoggedIn();
+  }, []);
 
   return (
     <AuthContext.Provider
