@@ -9,11 +9,13 @@ import Layout from 'components/Layout';
 import ImageUpload from 'components/ImageUpload';
 import Modal from 'components/Modal';
 import { notifyError, notifySuccess } from 'helper/notify';
+import { parseCookies } from 'helper/parseCookies';
 import axiosInstance from 'api/index';
 import { EventType, FormValues } from 'constants_types/types';
 
 interface Props {
-  eventItem: EventType
+  eventItem: EventType,
+  token: string
 }
 
 interface QuerySlugType {
@@ -25,7 +27,10 @@ interface ServerSideProps {
   req: NextApiRequest
 }
 
-const EditEvent: NextPage<Props> = ({ eventItem }) => {
+const EditEvent: NextPage<Props> = ({
+  eventItem,
+  token,
+}) => {
   const [imagePreview, setImagePreview] = useState<string | null>(
     eventItem?.image[eventItem.image.length - 1]?.formats?.thumbnail?.url
     || null,
@@ -36,10 +41,24 @@ const EditEvent: NextPage<Props> = ({ eventItem }) => {
 
   const handleSubmit = async (values: FormValues) => {
     try {
-      await axiosInstance.put(`/events/${eventItem.id}`, { ...values});
+      await axiosInstance.put(
+        `/events/${eventItem.id}`,
+        { ...values},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
       router.push('/events');
       notifySuccess();
-    } catch(er) {     
+    } catch(er) {  
+      const { status } = er.response;
+      
+      if ([403, 401].includes(status)) {
+        notifyError('Unauthorized');
+        return;
+      }
       notifyError();
     };
   };
@@ -101,6 +120,7 @@ const EditEvent: NextPage<Props> = ({ eventItem }) => {
         <ImageUpload
           imageUploaded={imageUploaded}
           evtId={eventItem.id}
+          token={token}
         />
       </Modal>
 
@@ -116,12 +136,13 @@ export const getServerSideProps = async (
     req,
   }: ServerSideProps,
 ) => {
+  const { token } = parseCookies(req);
   const res = await axiosInstance(`/events/?id=${id}`);
-  console.log('kjhfdksjhfkdj: ', req.headers.cookie);
   
   return {
     props: {
       eventItem: res.data[0],
+      token,
     },
   };
 };

@@ -5,6 +5,7 @@ import DashboardEvent from 'components/DashboardEvent';
 import { parseCookies } from 'helper/parseCookies';
 // import Pagination from 'components/forms/Pagination';
 import axiosInstance from 'api/index';
+import { notifyError, notifySuccess } from 'helper/notify';
 import { EventType } from 'constants_types/types';
 import styles from 'styles/Dashboard.module.css';
 
@@ -14,13 +15,29 @@ interface ServerSideProps {
 
 interface Props {
   events?: Array<EventType>,
+  token: string
 }
 
 const Dashboard: NextPage<Props> = ({
   events,
+  token,
 }) => {
-  const deleteEvent = (id: string | number) => {
-    console.log('delete: ', id);
+
+  const deleteEvent = async (id: string | number) => {
+    if (!confirm('Are you sure?')) return;
+
+    try {
+      await axiosInstance.delete(`/events/${id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+      );
+      notifySuccess('Successfully delete');
+    } catch (error) {
+      notifyError();
+    }
   };
 
   return (
@@ -52,6 +69,7 @@ export const getServerSideProps = async (
   return {
     props: {
       events: res.data,
+      token,
     },
   };
 };

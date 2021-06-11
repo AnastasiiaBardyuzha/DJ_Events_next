@@ -10,10 +10,15 @@ import styles from 'styles/Form.module.css';
 
 interface Props {
   evtId: string,
-  imageUploaded: () => void 
+  imageUploaded: () => void,
+  token: string
 }
 
-const ImageUpload: NextPage<Props> = ({ evtId, imageUploaded }) => {
+const ImageUpload: NextPage<Props> = ({
+  evtId,
+  imageUploaded,
+  token,
+}) => {
   const [image, setImage] = useState<string | Blob>('');
 
   const handleSubmit = async (e: SyntheticEvent) => {
@@ -26,10 +31,25 @@ const ImageUpload: NextPage<Props> = ({ evtId, imageUploaded }) => {
 
     try {
 
-      await axiosInstance.post('/upload', formData);
+      await axiosInstance.post(
+        '/upload',
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
       imageUploaded();
 
     } catch (er){
+      const { status } = er.response;
+      console.log(status);
+      
+      if ([403, 401].includes(status)) {
+        notifyError('Unauthorized');
+        return;
+      }
       notifyError();
     }
   };

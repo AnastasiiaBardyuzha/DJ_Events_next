@@ -74,7 +74,7 @@ const AuthProvider: NextPage<Props> = ({ children }) => {
       setUser(res.data.user);
       router.push('/account/dashboard');
     } catch (er) {
-      const {data} = er.response;;
+      const {data} = er.response;
 
       setError(data.message);
       setError(null);
