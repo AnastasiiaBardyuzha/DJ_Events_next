@@ -7,6 +7,7 @@ import {
 } from 'react';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
+import { notifyError } from 'helper/notify';
 import { authAxiosInstance } from 'api/index';
 import { FormValues } from 'constants_types/types';
 
@@ -69,15 +70,21 @@ const AuthProvider: NextPage<Props> = ({ children }) => {
   };
 
   // Logout user
-  const logout =  () => {
-    console.log('Logout');
+  const logout = async () => {
+    try {
+      await authAxiosInstance.post('/api/logout');
+ 
+      setUser(null);
+      router.push('/');
+    } catch (er) {
+      notifyError();
+    }
   };
 
   // Check if user is logged in
   const checkUserLoggedIn =  async () => {
     try {
-      const res = await authAxiosInstance(
-        '/api/user');
+      const res = await authAxiosInstance('/api/user');
  
       setUser(res.data.user);
     } catch (er) {
