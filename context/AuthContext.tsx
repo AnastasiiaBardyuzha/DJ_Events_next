@@ -52,13 +52,16 @@ const AuthProvider: NextPage<Props> = ({ children }) => {
   // Login user
   const login =  async ({ email:identifier, password }: FormValues) => {
     try {
-      const res = await authAxiosInstance.post('/api/login', {identifier, password});
+      const res = await authAxiosInstance.post(
+        '/api/login', { identifier, password },
+      );
 
-      console.log('loginres: ', res.data);
-      
-    }catch (er) {
-      console.log(er);
-      
+      setUser(res.data.user);
+    } catch (er) {
+      const {data} = er.response;;
+
+      setError(data.message);
+      setError(null);
     }
   };
 

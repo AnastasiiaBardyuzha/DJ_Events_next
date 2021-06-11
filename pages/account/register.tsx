@@ -1,10 +1,10 @@
-import {
-  useState,
-  useEffect,
-  useContext,
-  SyntheticEvent,
-  // ChangeEventHandler,
-} from 'react';
+// import {
+//   useState,
+//   useEffect,
+//   useContext,
+//   SyntheticEvent,
+//   // ChangeEventHandler,
+// } from 'react';
 import Link from 'next/link';
 import { FaUser } from 'react-icons/fa';
 import Layout from 'components/Layout';
@@ -33,31 +33,7 @@ const RegisterPage = () => {
         </h1>
 
         <RegisterForm handleSubmit={handleSubmit} />
-        {/* <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor='email'>Email Address
-              <input
-                type='email'
-                id='email'
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </label>
-          </div>
-          <div>
-            <label htmlFor='password'>Password
-              <input
-                type='password'
-                id='password'
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </label>
-          </div>
-
-          <input type='submit' value='Login' className='btn' />
-        </form> */}
-
+        
         <p>
           Already have an account? <Link href='/account/login'>Login</Link>
         </p>
