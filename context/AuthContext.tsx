@@ -48,8 +48,20 @@ const AuthProvider: NextPage<Props> = ({ children }) => {
   const router = useRouter();
 
   // Register user
-  const register = (userInfo: UserType) => {
-    console.log(userInfo);
+  const register = async (userInfo: UserType) => {
+    try {
+      const res = await authAxiosInstance.post(
+        '/api/register', userInfo,
+      );
+
+      setUser(res.data.user);
+      router.push('/account/dashboard');
+    } catch (er) {
+      const {data} = er.response;;
+
+      setError(data.message);
+      setError(null);
+    }
   };
 
   // Login user

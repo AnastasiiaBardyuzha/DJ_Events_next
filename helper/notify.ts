@@ -8,7 +8,7 @@ export const notifySuccess = (
 ) => toast.success(title, getToastConfigure(config));
 
 export const notifyError = (
-  title: string | ReactText = 'Something wrong',
+  title: string | ReactText | undefined | null = 'Something wrong',
   config: ConfigureType = {},
 ) => toast.error(title, getToastConfigure(config)) || '';
 

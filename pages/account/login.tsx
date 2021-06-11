@@ -21,7 +21,7 @@ const LoginPage = () => {
     try {
       await login(values); 
     } catch (er) {
-      console.log(error);
+      notifyError(error);
     }
   };
 

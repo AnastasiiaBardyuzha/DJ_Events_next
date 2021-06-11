@@ -1,26 +1,25 @@
-// import {
-//   useState,
-//   useEffect,
-//   useContext,
-//   SyntheticEvent,
-//   // ChangeEventHandler,
-// } from 'react';
+import { useEffect } from 'react';
 import Link from 'next/link';
 import { FaUser } from 'react-icons/fa';
 import Layout from 'components/Layout';
 import RegisterForm from 'components/forms/RegisterForm'; 
 import { useAuth } from 'context/AuthContext'; 
+import { notifyError } from 'helper/notify';
 import { FormValues } from 'constants_types/types';
 import styles from 'styles/AuthForm.module.css';
 
 const RegisterPage = () => {
   const { register, error } = useAuth();
+
+  useEffect(() => {
+    // eslint-disable-next-line no-unused-expressions
+    error && notifyError(error);
+  });
   const handleSubmit = async (values: FormValues) => {
-    // console.log(values);
     try {
       await register(values);
     } catch(er){
-      console.log(error);  
+      notifyError(error);
     }
     
   };
