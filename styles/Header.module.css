@@ -12,11 +12,36 @@
 .header a {
   color: #333;
   margin-right: 20px;
+  position: relative;
 }
 
 .header a:hover {
   color: #000;
 }
+
+.header a:after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  border-radius: 4px;
+  background-color: red;
+  width: 0;
+  transition: width 0.1s linear;
+}
+
+.header a:hover:after {
+  width: 100%;
+  left: 0;
+}
+
+.header a:focus:after {
+  width: 100%;
+  left: 0;
+}
+
 .header ul {
   display: flex;
   align-items: center;
