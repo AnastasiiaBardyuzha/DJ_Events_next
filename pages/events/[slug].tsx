@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import Layout from 'components/Layout';
+import EventMap from 'components/EventMap';
 import axiosInstance from 'api/index';
 import { EventType } from 'constants_types/types';
 import styles from 'styles/Event.module.css';
@@ -48,6 +49,8 @@ const EventPage: NextPage<Props> = ({ event }) => {
         <p>{event.description}</p>
         <h3>Venue: {event.venue}</h3>
         <p>{event.address}</p>
+
+        <EventMap event={event} />
 
         <Link href='/events'>
           <a className={styles.back}>{'<'} Go Back</a>
