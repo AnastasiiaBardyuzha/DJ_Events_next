@@ -61,10 +61,15 @@ export const getServerSideProps = async (
 ) => {
 
   const { token } = parseCookies(req);
-
-  const res = await axiosInstance('/events/me', {headers: {
-    Authorization: `Bearer ${token}`,
-  }});
+  
+  const res = await axiosInstance.get(
+    '/events/me',
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      }
+    }
+  );
   
   return {
     props: {

@@ -35,7 +35,14 @@ const AddEvent: NextPage<Props> = ({ token }) => {
       const eventItem = res.data;
       
       router.push(`/events/${eventItem.slug}`);
-    } catch(er) {     
+    } catch(er) {
+      const { status } = er.response;
+      
+      if ([403, 401].includes(status)) {
+        notifyError('Unauthorized');
+        return;
+      }
+
       notifyError();
     };
   };
