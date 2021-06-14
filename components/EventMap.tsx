@@ -5,6 +5,8 @@ import ReactMapGl, { Marker } from 'react-map-gl'
 import 'mapbox-gl/dist/mapbox-gl.css';
 import Geocode from 'react-geocode';
 import { EventType } from 'constants_types/types';
+// import
+import { OpenStreetMapProvider } from 'leaflet-geosearch';
 
 interface Props {
   event: EventType
@@ -19,6 +21,10 @@ interface ViewportType {
 };
 
  const EventMap: NextPage<Props> = ({ event }) => {
+
+  // setup
+const provider = new OpenStreetMapProvider();
+
   const [lat, setLat] = useState<number>(0);
   const [lng, setLng] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(true);
@@ -30,28 +36,30 @@ interface ViewportType {
     zoom: 12,
   });
 
-  Geocode.setApiKey(process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY || '');
+  const results = async () => {
+    try {
+      const res = await provider.search({ query: event.address });
+      const { x, y } = res[0]
+        console.log('lat: ', y);
+        console.log('lng: ', x);
+        
+        setLat(y)
+        setLng(x)
+        setViewport({ ...viewport, latitude: y, longitude: y })
+        setLoading(false)
+    } catch(er) {
+      console.log(er);    
+    }
+  }
+
+  useEffect(() => {results()}, []);
+  
 
   if (loading) return (
     <div className="">Loading...</div>
-  )
+  );
 
-
-  useEffect(() => {
-    // Get latitude & longitude from address.
-    Geocode.fromAddress(event.address).then(
-      (response) => {
-        const { lat, lng } = response.results[0].geometry.location
-        setLat(lat)
-        setLng(lng)
-        setViewport({ ...viewport, latitude: lat, longitude: lng })
-        setLoading(false)
-      },
-      (error) => {
-        console.error(error)
-      }
-    )
-  }, [])
+  console.log(lat, lng);
 
   return (
     <ReactMapGl

@@ -14,6 +14,7 @@
     "@types/react-geocode": "^0.2.0",
     "axios": "^0.21.1",
     "cookie": "^0.4.1",
+    "leaflet-geosearch": "^3.3.2",
     "moment": "^2.29.1",
     "next": "10.2.3",
     "qs": "^6.10.1",
