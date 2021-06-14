@@ -1,5 +1,6 @@
 import { NextPage } from 'next';
 import type { NextApiRequest } from 'next';
+import { useRouter } from 'next/router';
 import Layout from 'components/Layout';
 import DashboardEvent from 'components/DashboardEvent';
 import { parseCookies } from 'helper/parseCookies';
@@ -22,6 +23,7 @@ const Dashboard: NextPage<Props> = ({
   events,
   token,
 }) => {
+  const router = useRouter()
 
   const deleteEvent = async (id: string | number) => {
     if (!confirm('Are you sure?')) return;
@@ -35,6 +37,7 @@ const Dashboard: NextPage<Props> = ({
       },
       );
       notifySuccess('Successfully delete');
+      router.reload();
     } catch (error) {
       notifyError();
     }

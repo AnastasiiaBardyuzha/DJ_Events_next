@@ -1,12 +1,9 @@
-import { MouseEvent } from 'react';
 import { NextPage } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { FaPencilAlt, FaTimes } from 'react-icons/fa';
 import Layout from 'components/Layout';
 import axiosInstance from 'api/index';
-import { notifyError, notifySuccess } from 'helper/notify';
 import { EventType } from 'constants_types/types';
 import styles from 'styles/Event.module.css';
 
@@ -25,36 +22,10 @@ interface ServerSideProps {
 const EventPage: NextPage<Props> = ({ event }) => {
   const router = useRouter();
 
-  const deleteEvent = async (e: MouseEvent) => {
-    e.preventDefault();
-    if (!confirm('Are you sure?')) return;
-
-    try {
-      await axiosInstance.delete(`/events/${event.id}`);
-      notifySuccess('Successfully delete');
-      router.push('/events');
-    } catch (error) {
-      notifyError();
-    }
-  };
 
   return (
     <Layout title="Event">
        <div className={styles.event}>
-        <div className={styles.controls}>
-          <Link href={`/events/edit/${event.id}`}>
-            <a>
-              <FaPencilAlt /> Edit Event
-            </a>
-          </Link>
-          <a
-            href='#'
-            className={styles.delete}
-            onClick={deleteEvent}>
-            <FaTimes /> Delete Event
-          </a>
-        </div>
-
         <span>
           {new Date(event.date).toLocaleDateString('en-US')} at {event.time}
         </span>
