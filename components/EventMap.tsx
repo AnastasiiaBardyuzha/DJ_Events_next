@@ -36,32 +36,36 @@ const provider = new OpenStreetMapProvider();
     zoom: 12,
   });
 
-  const results = async () => {
-    try {
-      const res = await provider.search({ query: event.address });
-      const { x, y } = res[0]
-        console.log('lat: ', y);
-        console.log('lng: ', x);
-        
-        setLat(y)
-        setLng(x)
-        setViewport({ ...viewport, latitude: y, longitude: y })
-        setLoading(false)
-    } catch(er) {
-      console.log(er);    
-    }
-  }
+  useEffect(() => {
+    const results = async () => {
+      try {
+        const res = await provider.search({ query: event.address }); 
+        const { x, y } = res[0]
+          console.log('lat: ', y);
+          console.log('lng: ', x);
+          
+          setLat(y)
+          setLng(x)
+          setViewport({ ...viewport, latitude: y, longitude: y })
+          setLoading(false)
+      } catch(er) {
+        console.log(er);    
+      }
+    };
 
-  useEffect(() => {results()}, []);
+    results();
+
+  }, []);
   
 
-  if (loading) return (
-    <div className="">Loading...</div>
-  );
+  // if (loading) return (
+  //   <div className="">Loading...</div>
+  // );
 
   console.log(lat, lng);
 
   return (
+    <>
     <ReactMapGl
       {...viewport}
       mapboxApiAccessToken={process.env.NEXT_PUBLIC_MAPBOX_API_TOKEN}
@@ -70,7 +74,7 @@ const provider = new OpenStreetMapProvider();
       <Marker key={event.id} latitude={lat} longitude={lng}>
         <Image src='/images/pin.svg' width={30} height={30} />
       </Marker>
-    </ReactMapGl>
+    </ReactMapGl></>
   )
  };
 
