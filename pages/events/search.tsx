@@ -4,7 +4,7 @@ import Link from 'next/link';
 import qs from 'qs';
 import Layout from 'components/Layout';
 import EventsList from 'components/EventsList';
-import axiosInstance from 'api/index';
+import axiosInstance from 'api';
 import { EventType } from 'constants_types/types';
 
 interface Props {

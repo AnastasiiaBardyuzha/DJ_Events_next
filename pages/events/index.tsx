@@ -2,7 +2,7 @@ import { NextPage } from 'next';
 import Layout from 'components/Layout';
 import EventsList from 'components/EventsList';
 import Pagination from 'components/forms/Pagination';
-import axiosInstance from 'api/index';
+import axiosInstance from 'api';
 import { EventType } from 'constants_types/types';
 import { PER_PAGE } from 'constants_types/constants';
 

@@ -10,7 +10,7 @@ import ImageUpload from 'components/ImageUpload';
 import Modal from 'components/Modal';
 import { notifyError, notifySuccess } from 'helper/notify';
 import { parseCookies } from 'helper/parseCookies';
-import axiosInstance from 'api/index';
+import axiosInstance from 'api';
 import { EventType, FormValues } from 'constants_types/types';
 
 interface Props {

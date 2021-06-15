@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import Layout from 'components/Layout';
 import DashboardEvent from 'components/DashboardEvent';
 import { parseCookies } from 'helper/parseCookies';
-import axiosInstance from 'api/index';
+import axiosInstance from 'api';
 import { notifyError, notifySuccess } from 'helper/notify';
 import { EventType } from 'constants_types/types';
 import styles from 'styles/Dashboard.module.css';

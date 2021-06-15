@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import Layout from 'components/Layout';
-import axiosInstance from 'api/index';
+import axiosInstance from 'api';
 import { EventType } from 'constants_types/types';
 import styles from 'styles/Event.module.css';
 

@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import cookie from 'cookie';
-import axiosInstance from 'api/index';
+import axiosInstance from 'api';
 import { isDevelopmentMode } from 'helper/isDevelopmentMode';
 import { FETCH_METHODS } from 'constants_types/constants';
 
