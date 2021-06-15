@@ -50,7 +50,7 @@ const Header = () => {
             <li>
               <Link href="/account/login">
                 <a className='btn-secondary btn-icon'>
-                <FaSignInAlt /> Sign In
+                  <FaSignInAlt /> Sign In
                 </a>
               </Link>
             </li>

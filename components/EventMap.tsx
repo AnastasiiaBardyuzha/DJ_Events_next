@@ -32,25 +32,29 @@ interface ViewportType {
     zoom: 12,
   });
 
+  const getCoordinates = async () => {
+    try {
+      const res = await provider.search({ query: event.address }); 
+      console.log(res);
+      
+      const { x, y } = res[0];
+
+        setLat(y);
+        setLng(x);
+        setViewport({
+          ...viewport,
+          latitude: y,
+          longitude: x,
+        });
+        setLoading(false);
+
+    } catch(er) {
+      console.log(er);    
+    }
+  };
+
   useEffect(() => {
-    const results = async () => {
-      try {
-        const res = await provider.search({ query: event.address }); 
-        console.log(res);
-        
-        const { x, y } = res[0];
-
-          setLat(y);
-          setLng(x);
-          setViewport({ ...viewport, latitude: y, longitude: x });
-          setLoading(false);
-
-      } catch(er) {
-        console.log(er);    
-      }
-    };
-
-    results();
+    getCoordinates();
 
   }, []);
   
@@ -58,20 +62,28 @@ interface ViewportType {
     <div className="">Loading...</div>
   );
 
-  console.log(lat, lng);
-  console.log(viewport);
-
   return (
-    <>
     <ReactMapGl
       {...viewport}
-      mapboxApiAccessToken={process.env.NEXT_PUBLIC_MAPBOX_API_TOKEN}
-      onViewportChange={(vp: ViewportType) => setViewport(vp)}
+      mapboxApiAccessToken={
+        process.env.NEXT_PUBLIC_MAPBOX_API_TOKEN
+      }
+      onViewportChange={
+        (vp: ViewportType) => setViewport(vp)
+      }
     >
-      <Marker key={event.id} latitude={lat} longitude={lng}>
-        <Image src='/images/pin.svg' width={30} height={30} />
+      <Marker
+        key={event.id}
+        latitude={lat}
+        longitude={lng}
+      >
+        <Image
+          src='/images/pin.svg'
+          width={30}
+          height={30}
+        />
       </Marker>
-    </ReactMapGl></>
+    </ReactMapGl>
   );
  };
 

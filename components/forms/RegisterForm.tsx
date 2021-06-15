@@ -1,4 +1,8 @@
-import { useState, SyntheticEvent, ChangeEventHandler } from 'react';
+import {
+  useState,
+  SyntheticEvent,
+  ChangeEventHandler,
+} from 'react';
 import { NextPage } from 'next';
 import { notifyError } from 'helper/notify';
 import { registerStructure } from 'utils/structures';

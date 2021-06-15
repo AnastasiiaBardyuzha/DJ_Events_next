@@ -54,7 +54,10 @@ const AddEvent: NextPage<Props> = ({ token }) => {
       </Link>
       <h1>Add Event</h1>
 
-      <EventForm handleSubmit={handleSubmit} act="add" />
+      <EventForm
+        handleSubmit={handleSubmit}
+        act="add"
+      />
       
     </Layout>
   );

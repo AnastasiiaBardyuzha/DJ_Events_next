@@ -29,7 +29,10 @@ interface Props {
     <h1>Events</h1>
     <EventsList events={events} />
 
-    <Pagination page={page} total={total} />
+    <Pagination
+      page={page}
+      total={total}
+    />
   </Layout>
 );
 

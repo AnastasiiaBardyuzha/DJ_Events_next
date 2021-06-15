@@ -65,7 +65,9 @@ const AuthProvider: NextPage<Props> = ({ children }) => {
   };
 
   // Login user
-  const login =  async ({ email:identifier, password }: FormValues) => {
+  const login =  async (
+    { email:identifier, password }: FormValues,
+    ) => {
     try {
       const res = await authAxiosInstance.post(
         '/api/login', { identifier, password },

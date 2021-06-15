@@ -15,7 +15,9 @@ interface Props {
       <EventsList events={events} />
       {events && (
         <Link href="/events">
-          <a className="btn-secondary">View All Events</a>
+          <a className="btn-secondary">
+            View All Events
+          </a>
         </Link>
       )}
     </Layout>

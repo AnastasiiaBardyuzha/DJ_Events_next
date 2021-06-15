@@ -10,7 +10,10 @@ interface Props {
     <>
       {!events?.length && <h3>No events to show</h3>}
       {events?.map((event: EventType) => (
-          <EventItem eventItem={event} key={event.id} />
+          <EventItem
+            eventItem={event}
+            key={event.id}
+          />
         ),
       )}
     </>  

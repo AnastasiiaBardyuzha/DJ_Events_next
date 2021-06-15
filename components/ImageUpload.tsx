@@ -57,7 +57,9 @@ const ImageUpload: NextPage<Props> = ({
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { target } = e;
 
-    setImage(target.files?.length ? target.files[0] : '');
+    setImage(
+      target.files?.length ? target.files[0] : '',
+    );
   };
 
   return (

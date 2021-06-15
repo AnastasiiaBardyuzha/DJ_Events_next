@@ -16,7 +16,12 @@ interface Props {
   children: ReactNode
 }
 
-const Modal: FC<Props> = ({ show, onClose, children, title }) => {
+const Modal: FC<Props> = ({
+  show,
+  onClose,
+  children,
+  title,
+}) => {
   const [isBrowser, setIsBrowser] = useState(false);
 
   useEffect(() => setIsBrowser(true));
@@ -30,7 +35,10 @@ const Modal: FC<Props> = ({ show, onClose, children, title }) => {
     <div className={styles.overlay}>
       <div className={styles.modal}>
         <div className={styles.header}>
-          <a href='#' onClick={handleClose}>
+          <a
+            href='#'
+            onClick={handleClose}
+          >
             <FaTimes />
           </a>
         </div>
@@ -38,7 +46,8 @@ const Modal: FC<Props> = ({ show, onClose, children, title }) => {
         <div className={styles.body}>{children}</div>
       </div>
     </div>
-  ) : null;
+  ) : 
+    null;
 
   if (isBrowser) {
     const portalDiv = document.getElementById('modal-root');

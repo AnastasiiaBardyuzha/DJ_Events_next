@@ -49,7 +49,11 @@ const Dashboard: NextPage<Props> = ({
         <h3>My Events</h3>
 
         {events?.map((evt) => (
-          <DashboardEvent key={evt.id} eventItem={evt} handleDelete={deleteEvent} />
+          <DashboardEvent
+            key={evt.id}
+            eventItem={evt}
+            handleDelete={deleteEvent}
+          />
         ))}
       </div>
     </Layout>

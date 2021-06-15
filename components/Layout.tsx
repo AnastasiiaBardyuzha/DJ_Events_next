@@ -29,7 +29,10 @@ const Layout: NextPage<Props> = ({
         <title>{title}</title>
         <meta name="description" content={description} />
         <meta name="keywords" content={keywords} />
-        <link href="https://api.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css" rel="stylesheet" />
+        <link
+          href="https://api.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css"
+          rel="stylesheet"
+        />
       </Head>
 
       <Header />

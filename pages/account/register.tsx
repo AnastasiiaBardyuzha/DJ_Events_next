@@ -34,7 +34,11 @@ const RegisterPage = () => {
         <RegisterForm handleSubmit={handleSubmit} />
         
         <p>
-          Already have an account? <Link href='/account/login'>Login</Link>
+          Already have an account?
+          {' '}
+          <Link href='/account/login'>
+            Login
+          </Link>
         </p>
       </div>
     </Layout>

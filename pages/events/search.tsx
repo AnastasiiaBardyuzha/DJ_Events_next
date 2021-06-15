@@ -27,7 +27,9 @@ interface ServerSideProps {
       <Link href='/events'>
         <a>{'<'} Go Back</a>
       </Link>
-      <h1>Search Results for {query.term}</h1>
+      <h1>
+        Search Results for {query.term}
+      </h1>
       <EventsList events={events} />
     </Layout>
   );

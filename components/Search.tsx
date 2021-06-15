@@ -1,4 +1,8 @@
-import { useState, ChangeEventHandler, SyntheticEvent } from 'react';
+import {
+  useState,
+  ChangeEventHandler,
+  SyntheticEvent,
+} from 'react';
 import { useRouter } from 'next/router';
 import styles from 'styles/Search.module.css';
 

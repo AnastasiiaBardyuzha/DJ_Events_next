@@ -10,7 +10,9 @@ export interface ConfigureType {
   progress?: undefined,
 };
 
-export const getToastConfigure = (configureToast: ConfigureType = {}) => ({
+export const getToastConfigure = (
+  configureToast: ConfigureType = {},
+) => ({
     ...configureToast,
     position: toast.POSITION.TOP_RIGHT,
     autoClose: 5000,

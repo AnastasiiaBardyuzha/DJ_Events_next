@@ -30,7 +30,9 @@ const EventItem: NextPage<Props> = ({ eventItem }) => (
 
       <div className={styles.link}>
         <Link href={`/events/${eventItem.slug}`}>
-          <a className='btn'>Details</a>
+          <a className='btn'>
+            Details
+          </a>
         </Link>
       </div>
     </div>
