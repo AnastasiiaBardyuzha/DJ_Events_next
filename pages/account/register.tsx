@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import Link from 'next/link';
+import CustomLink from 'components/common/CustomLink';
 import { FaUser } from 'react-icons/fa';
 import Layout from 'components/Layout';
 import RegisterForm from 'components/forms/RegisterForm'; 
@@ -36,9 +36,9 @@ const RegisterPage = () => {
         <p>
           Already have an account?
           {' '}
-          <Link href='/account/login'>
+          <CustomLink href='/account/login'>
             Login
-          </Link>
+          </CustomLink>
         </p>
       </div>
     </Layout>

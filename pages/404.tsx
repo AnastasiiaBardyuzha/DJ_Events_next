@@ -1,5 +1,5 @@
- import Link from 'next/link';
  import { FaExclamationTriangle } from 'react-icons/fa';
+ import CustomLink from 'components/common/CustomLink';
  import Layout from '../components/Layout';
  import styles from '../styles/404.module.css';
 
@@ -11,9 +11,9 @@
           404
         </h1>
         <h4>Sorry, there is nothing here</h4>
-        <Link href="/">
+        <CustomLink href="/">
           Go Back Home
-        </Link>
+        </CustomLink>
       </div>
     </Layout>
   );

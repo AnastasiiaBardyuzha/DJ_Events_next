@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import Link from 'next/link';
+import CustomLink from 'components/common/CustomLink';
 import { FaPencilAlt, FaTimes } from 'react-icons/fa';
 import { EventType } from 'constants_types/types';
 import styles from 'styles/DashboardEvent.module.css';
@@ -12,15 +12,18 @@ interface Props {
 const DashboardEvent: NextPage<Props> = ({ eventItem, handleDelete }) => (
     <div className={styles.event}>
       <h4>
-        <Link href={`/events/${eventItem.slug}`}>
-          <a>{eventItem.name}</a>
-        </Link>
+        <CustomLink
+          href={`/events/${eventItem.slug}`}
+        >
+          {eventItem.name}
+        </CustomLink>
       </h4>
-      <Link href={`/events/edit/${eventItem.id}`}>
-        <a className={styles.edit}>
-          <FaPencilAlt /> <span>Edit Event</span>
-        </a>
-      </Link>
+      <CustomLink
+        href={`/events/${eventItem.slug}`}
+        className={styles.edit}
+      >
+        <FaPencilAlt /> <span>Edit Event</span>
+      </CustomLink>
       <a
         href='#'
         className={styles.delete}

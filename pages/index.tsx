@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import Link from 'next/link';
+import CustomLink from 'components/common/CustomLink';
 import Layout from 'components/Layout';
 import EventsList from 'components/EventsList';
 import axiosInstance from 'api';
@@ -14,11 +14,12 @@ interface Props {
       <h1>Upcoming Events</h1>
       <EventsList events={events} />
       {events && (
-        <Link href="/events">
-          <a className="btn-secondary">
-            View All Events
-          </a>
-        </Link>
+        <CustomLink 
+          href="/events"
+          className="btn-secondary"
+        >
+          View All Events
+        </CustomLink>
       )}
     </Layout>
   );

@@ -1,5 +1,5 @@
 import { FaSignInAlt, FaSignOutAlt } from 'react-icons/fa';
-import Link from 'next/link';
+import CustomLink from 'components/common/CustomLink';
 import { useAuth } from 'context/AuthContext';
 import Search from 'components/Search';
 import styles from '../styles/Header.module.css';
@@ -10,9 +10,9 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
-        <Link href="/">
-          <a>DJ Events</a>
-        </Link>
+        <CustomLink href="/">
+          DJ Events
+        </CustomLink>
       </div>
 
       <Search />
@@ -20,21 +20,21 @@ const Header = () => {
       <nav>
         <ul>
           <li>
-            <Link href="/events">
-              <a>Events</a>
-            </Link>
+            <CustomLink href="/events">
+              Events
+            </CustomLink>
           </li>
           { user ? (
             <>
               <li>
-                <Link href="/events/add">
-                  <a>Add Event</a>
-                </Link>
+                <CustomLink href="/events/add">
+                  Add Event
+                </CustomLink>
               </li>
               <li>
-                <Link href="/account/dashboard">
-                  <a>Dashboard</a>
-                </Link>
+                <CustomLink href="/account/dashboard">
+                  Dashboard
+                </CustomLink>
               </li>
               <li>
                 <button
@@ -48,11 +48,12 @@ const Header = () => {
               </>
           ) : (
             <li>
-              <Link href="/account/login">
-                <a className='btn-secondary btn-icon'>
-                  <FaSignInAlt /> Sign In
-                </a>
-              </Link>
+              <CustomLink
+                href="/account/login"
+                className='btn-secondary btn-icon'
+              >
+                <FaSignInAlt /> Sign In
+              </CustomLink>
             </li>
           )
           } 

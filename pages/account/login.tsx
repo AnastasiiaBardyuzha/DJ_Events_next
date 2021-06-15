@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useEffect } from 'react';
-import Link from 'next/link';
+import CustomLink from 'components/common/CustomLink';
 import { FaUser } from 'react-icons/fa';
 import Layout from 'components/Layout';
 import LoginForm from 'components/forms/LoginForm';
@@ -36,9 +36,9 @@ const LoginPage = () => {
         <p>
           Don't have an account?
           {' '}
-          <Link href='/account/register'>
+          <CustomLink href='/account/register'>
             Register
-          </Link>
+          </CustomLink>
         </p>
       </div>
     </Layout>

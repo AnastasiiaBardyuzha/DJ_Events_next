@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { NextPage, NextApiRequest } from 'next';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 import Image from 'next/image';
 import { FaImage } from 'react-icons/fa';
+import CustomLink from 'components/common/CustomLink';
 import EventForm from 'components/forms/EventForm'; 
 import Layout from 'components/Layout';
 import ImageUpload from 'components/ImageUpload';
@@ -75,9 +75,9 @@ const EditEvent: NextPage<Props> = ({
 
   return (
     <Layout title="Edit Event">
-      <Link href='/events'>
-        <a>{'<'} Go Back</a>
-      </Link>
+      <CustomLink href='/events'>
+        {'<'} Go to Events
+      </CustomLink>
       <h1>Edit Event</h1>
 
       <EventForm

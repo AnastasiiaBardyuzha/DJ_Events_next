@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import Link from 'next/link';
+import CustomLink from 'components/common/CustomLink';
 import { PER_PAGE } from 'constants_types/constants';
 
 interface Props {
@@ -13,19 +13,21 @@ const Pagination: NextPage<Props> = ({ page, total }) => {
   return (
     <>
     { page > 1  && (
-      <Link 
+      <CustomLink 
         href={`/events?page=${page - 1}`}
+        className='btn-secondary'
       >
-        <a className='btn-secondary'>Prev</a>
-      </Link>
+        Prev
+      </CustomLink>
     )}
 
     { page < lastPage  && (
-      <Link 
+      <CustomLink 
         href={`/events?page=${page + 1}`}
+        className='btn-secondary'
       >
-        <a className='btn-secondary'>Next</a>
-      </Link>
+        Next
+      </CustomLink>
     )}
     </>
   );

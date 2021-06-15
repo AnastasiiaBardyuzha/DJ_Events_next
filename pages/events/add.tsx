@@ -1,9 +1,9 @@
 import { NextPage } from 'next';
 import type { NextApiRequest } from 'next';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 import { notifyError } from 'helper/notify';
 import { parseCookies } from 'helper/parseCookies';
+import CustomLink from 'components/common/CustomLink';
 import Layout from 'components/Layout';
 import EventForm from 'components/forms/EventForm'; 
 import axiosInstance from 'api';
@@ -49,9 +49,9 @@ const AddEvent: NextPage<Props> = ({ token }) => {
 
   return (
     <Layout title="Add New Event">
-      <Link href='/events'>
-        <a>{'<'} Go Back</a>
-      </Link>
+      <CustomLink href='/events'>
+        {'<'} Go to Events
+      </CustomLink>
       <h1>Add Event</h1>
 
       <EventForm

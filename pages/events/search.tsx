@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 import qs from 'qs';
+import CustomLink from 'components/common/CustomLink';
 import Layout from 'components/Layout';
 import EventsList from 'components/EventsList';
 import axiosInstance from 'api';
@@ -24,9 +24,9 @@ interface ServerSideProps {
 
    return (
     <Layout>
-      <Link href='/events'>
-        <a>{'<'} Go Back</a>
-      </Link>
+      <CustomLink href='/events'>
+        {'<'} Go to Events
+      </CustomLink>
       <h1>
         Search Results for {query.term}
       </h1>

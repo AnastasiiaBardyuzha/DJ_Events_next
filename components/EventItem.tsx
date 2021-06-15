@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
-import Link from 'next/link';
 import Image from 'next/image';
+import CustomLink from 'components/common/CustomLink';
 import { EventType } from 'constants_types/types';
 import styles from 'styles/EventItem.module.css';
 
@@ -29,11 +29,12 @@ const EventItem: NextPage<Props> = ({ eventItem }) => (
       </div>
 
       <div className={styles.link}>
-        <Link href={`/events/${eventItem.slug}`}>
-          <a className='btn'>
-            Details
-          </a>
-        </Link>
+        <CustomLink
+          href={`/events/${eventItem.slug}`}
+          className='btn'
+        >
+          Details
+        </CustomLink>
       </div>
     </div>
   );
