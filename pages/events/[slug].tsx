@@ -40,7 +40,7 @@ const EventPage: NextPage<Props> = ({ event }) => {
           <Image
             src={
               event.image[event.image.length - 1]?.formats?.large?.url
-              || '/images/event-default.png'
+              ?? '/images/event-default.png'
             }
             width={960}
             height={600}

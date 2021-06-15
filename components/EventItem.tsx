@@ -14,7 +14,7 @@ const EventItem: NextPage<Props> = ({ eventItem }) => (
         <Image
           src={
             eventItem.image[eventItem.image.length - 1]?.formats?.thumbnail?.url
-            || '/images/event-default.png'
+            ?? '/images/event-default.png'
           }
           width={170}
           height={100}

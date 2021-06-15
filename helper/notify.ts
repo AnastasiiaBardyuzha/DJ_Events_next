@@ -10,7 +10,7 @@ export const notifySuccess = (
 export const notifyError = (
   title: string | ReactText | undefined | null = 'Something wrong',
   config: ConfigureType = {},
-) => toast.error(title, getToastConfigure(config)) || '';
+) => toast.error(title, getToastConfigure(config)) ?? '';
 
 export const notifyInfo = (
   title: string = 'Info message',

@@ -26,13 +26,13 @@ const EventForm: NextPage<Props> = ({
   act,
 }) => {
   const [values, setValues] = useState<FormValues>({
-    name: eventItem?.name || '',
-    venue: eventItem?.venue || '',
-    performers: eventItem?.performers || '',
-    description: eventItem?.description || '',
-    date: moment(eventItem?.date).format('yyy-MM-DD') || '',
-    time: eventItem?.time || '',
-    address: eventItem?.address || '',
+    name: eventItem?.name ?? '',
+    venue: eventItem?.venue ?? '',
+    performers: eventItem?.performers ?? '',
+    description: eventItem?.description ?? '',
+    date: moment(eventItem?.date).format('yyy-MM-DD') ?? '',
+    time: eventItem?.time ?? '',
+    address: eventItem?.address ?? '',
   });
 
   const handleInputChange: 

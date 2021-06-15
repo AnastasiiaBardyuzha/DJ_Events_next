@@ -19,7 +19,7 @@ const DashboardEvent: NextPage<Props> = ({ eventItem, handleDelete }) => (
         </CustomLink>
       </h4>
       <CustomLink
-        href={`/events/${eventItem.slug}`}
+        href={`/events/edit/${eventItem.id}`}
         className={styles.edit}
       >
         <FaPencilAlt /> <span>Edit Event</span>

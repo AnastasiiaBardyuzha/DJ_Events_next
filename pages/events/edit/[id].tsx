@@ -33,7 +33,7 @@ const EditEvent: NextPage<Props> = ({
 }) => {
   const [imagePreview, setImagePreview] = useState<string | null>(
     eventItem?.image[eventItem.image.length - 1]?.formats?.thumbnail?.url
-    || null,
+    ?? null,
   );
   const [showModal, setShowModal] = useState<boolean>(false);
 
@@ -92,7 +92,7 @@ const EditEvent: NextPage<Props> = ({
           <Image
             src={
               imagePreview
-              || '/images/event-default.png'
+              ?? '/images/event-default.png'
             }
             width={170}
             height={100}

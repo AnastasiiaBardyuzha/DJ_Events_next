@@ -35,7 +35,6 @@ interface ViewportType {
   const getCoordinates = async () => {
     try {
       const res = await provider.search({ query: event.address }); 
-      console.log(res);
       
       const { x, y } = res[0];
 
