@@ -4,7 +4,6 @@ import { useRouter } from 'next/router';
 import Layout from 'components/Layout';
 import DashboardEvent from 'components/DashboardEvent';
 import { parseCookies } from 'helper/parseCookies';
-// import Pagination from 'components/forms/Pagination';
 import axiosInstance from 'api/index';
 import { notifyError, notifySuccess } from 'helper/notify';
 import { EventType } from 'constants_types/types';
@@ -23,7 +22,7 @@ const Dashboard: NextPage<Props> = ({
   events,
   token,
 }) => {
-  const router = useRouter()
+  const router = useRouter();
 
   const deleteEvent = async (id: string | number) => {
     if (!confirm('Are you sure?')) return;
@@ -70,8 +69,8 @@ export const getServerSideProps = async (
     {
       headers: {
         Authorization: `Bearer ${token}`,
-      }
-    }
+      },
+    },
   );
   
   return {
