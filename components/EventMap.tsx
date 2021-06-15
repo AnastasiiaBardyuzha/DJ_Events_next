@@ -1,12 +1,9 @@
 import { NextPage } from 'next';
-import Image from 'next/image'
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
-import ReactMapGl, { Marker } from 'react-map-gl'
-import 'mapbox-gl/dist/mapbox-gl.css';
-import Geocode from 'react-geocode';
-import { EventType } from 'constants_types/types';
-// import
+import ReactMapGl, { Marker } from 'react-map-gl';
 import { OpenStreetMapProvider } from 'leaflet-geosearch';
+import { EventType } from 'constants_types/types';
 
 interface Props {
   event: EventType
@@ -22,8 +19,7 @@ interface ViewportType {
 
  const EventMap: NextPage<Props> = ({ event }) => {
 
-  // setup
-const provider = new OpenStreetMapProvider();
+  const provider = new OpenStreetMapProvider();
 
   const [lat, setLat] = useState<number>(0);
   const [lng, setLng] = useState<number>(0);
@@ -40,14 +36,15 @@ const provider = new OpenStreetMapProvider();
     const results = async () => {
       try {
         const res = await provider.search({ query: event.address }); 
-        const { x, y } = res[0]
-          console.log('lat: ', y);
-          console.log('lng: ', x);
-          
-          setLat(y)
-          setLng(x)
-          setViewport({ ...viewport, latitude: y, longitude: y })
-          setLoading(false)
+        console.log(res);
+        
+        const { x, y } = res[0];
+
+          setLat(y);
+          setLng(x);
+          setViewport({ ...viewport, latitude: y, longitude: x });
+          setLoading(false);
+
       } catch(er) {
         console.log(er);    
       }
@@ -57,12 +54,12 @@ const provider = new OpenStreetMapProvider();
 
   }, []);
   
-
-  // if (loading) return (
-  //   <div className="">Loading...</div>
-  // );
+  if (loading) return (
+    <div className="">Loading...</div>
+  );
 
   console.log(lat, lng);
+  console.log(viewport);
 
   return (
     <>
@@ -75,7 +72,7 @@ const provider = new OpenStreetMapProvider();
         <Image src='/images/pin.svg' width={30} height={30} />
       </Marker>
     </ReactMapGl></>
-  )
+  );
  };
 
 export default EventMap;
