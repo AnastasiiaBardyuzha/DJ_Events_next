@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import Image from 'next/image';
 import CustomLink from 'components/common/CustomLink';
-import { EventType } from 'constants_types/types';
+import { EventType } from 'interfaces';
 import styles from 'styles/EventItem.module.css';
 
 interface Props {

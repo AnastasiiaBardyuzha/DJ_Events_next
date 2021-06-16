@@ -11,7 +11,7 @@ import Modal from 'components/Modal';
 import { notifyError, notifySuccess } from 'helper/notify';
 import { parseCookies } from 'helper/parseCookies';
 import axiosInstance from 'api';
-import { EventType, FormValues } from 'constants_types/types';
+import { EventType, FormValues } from 'interfaces';
 
 interface Props {
   eventItem: EventType,

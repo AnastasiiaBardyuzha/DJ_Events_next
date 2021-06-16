@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import CustomLink from 'components/common/CustomLink';
-import { PER_PAGE } from 'constants_types/constants';
+import { PER_PAGE } from 'utils/constants';
 
 interface Props {
   total: number,

@@ -3,8 +3,8 @@ import Layout from 'components/Layout';
 import EventsList from 'components/EventsList';
 import Pagination from 'components/forms/Pagination';
 import axiosInstance from 'api';
-import { EventType } from 'constants_types/types';
-import { PER_PAGE } from 'constants_types/constants';
+import { EventType } from 'interfaces';
+import { PER_PAGE } from 'utils/constants';
 
 interface QuerySlugType {
   page: string | number

@@ -4,7 +4,7 @@ import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import Layout from 'components/Layout';
 import axiosInstance from 'api';
-import { EventType } from 'constants_types/types';
+import { EventType } from 'interfaces';
 import styles from 'styles/Event.module.css';
 
 const DynamicComponentWithNoSSR = dynamic(

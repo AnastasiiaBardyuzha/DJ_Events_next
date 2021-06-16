@@ -5,7 +5,7 @@ import Layout from 'components/Layout';
 import RegisterForm from 'components/forms/RegisterForm'; 
 import { useAuth } from 'context/AuthContext'; 
 import { notifyError } from 'helper/notify';
-import { FormValues } from 'constants_types/types';
+import { FormValues } from 'interfaces';
 import styles from 'styles/AuthForm.module.css';
 
 const RegisterPage = () => {

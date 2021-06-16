@@ -3,7 +3,7 @@ import CustomLink from 'components/common/CustomLink';
 import Layout from 'components/Layout';
 import EventsList from 'components/EventsList';
 import axiosInstance from 'api';
-import { EventType } from 'constants_types/types';
+import { EventType } from 'interfaces';
 
 interface Props {
   events?: Array<EventType>

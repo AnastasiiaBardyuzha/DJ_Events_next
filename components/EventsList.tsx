@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import EventItem from 'components/EventItem';
-import { EventType } from 'constants_types/types';
+import { EventType } from 'interfaces';
 
 interface Props {
   events?: Array<EventType>

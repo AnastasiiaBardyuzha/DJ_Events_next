@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { API_URL, NEXT_URL } from 'constants_types/constants';
+import { API_URL, NEXT_URL } from 'utils/constants';
 
 const configuration = {
   url: '/',

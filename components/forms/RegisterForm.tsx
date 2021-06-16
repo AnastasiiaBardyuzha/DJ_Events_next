@@ -6,7 +6,7 @@ import {
 import { NextPage } from 'next';
 import { notifyError } from 'helper/notify';
 import { registerStructure } from 'utils/structures';
-import { FormValues } from 'constants_types/types';
+import { FormValues } from 'interfaces';
 
 interface Props {
   handleSubmit: (values: FormValues) => void,

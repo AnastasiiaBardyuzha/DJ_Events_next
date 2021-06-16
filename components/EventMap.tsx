@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import ReactMapGl, { Marker } from 'react-map-gl';
 import { OpenStreetMapProvider } from 'leaflet-geosearch';
-import { EventType } from 'constants_types/types';
+import { EventType } from 'interfaces';
 
 interface Props {
   event: EventType

@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import CustomLink from 'components/common/CustomLink';
 import { FaPencilAlt, FaTimes } from 'react-icons/fa';
-import { EventType } from 'constants_types/types';
+import { EventType } from 'interfaces';
 import styles from 'styles/DashboardEvent.module.css';
 
 interface Props {

@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import cookie from 'cookie';
 import axiosInstance from 'api';
-import { FETCH_METHODS } from 'constants_types/constants';
+import { FETCH_METHODS } from 'utils/constants';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === FETCH_METHODS.get) {

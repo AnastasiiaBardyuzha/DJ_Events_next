@@ -9,7 +9,7 @@ import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { notifyError } from 'helper/notify';
 import { authAxiosInstance } from 'api';
-import { FormValues } from 'constants_types/types';
+import { FormValues } from 'interfaces';
 
 interface Props {
   children: ReactNode

@@ -7,7 +7,7 @@ import CustomLink from 'components/common/CustomLink';
 import Layout from 'components/Layout';
 import EventForm from 'components/forms/EventForm'; 
 import axiosInstance from 'api';
-import { FormValues } from 'constants_types/types';
+import { FormValues } from 'interfaces';
 
 interface ServerSideProps {
   req: NextApiRequest

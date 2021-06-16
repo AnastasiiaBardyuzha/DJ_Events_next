@@ -6,7 +6,7 @@ import DashboardEvent from 'components/DashboardEvent';
 import { parseCookies } from 'helper/parseCookies';
 import axiosInstance from 'api';
 import { notifyError, notifySuccess } from 'helper/notify';
-import { EventType } from 'constants_types/types';
+import { EventType } from 'interfaces';
 import styles from 'styles/Dashboard.module.css';
 
 interface ServerSideProps {

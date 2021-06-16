@@ -3,8 +3,8 @@ import { NextPage } from 'next';
 import moment from 'moment';
 import { notifyError } from 'helper/notify';
 import { addEventStructure } from 'utils/structures';
-import { EventType, FormValues } from 'constants_types/types';
-import { actType } from 'constants_types/constants';
+import { EventType, FormValues } from 'interfaces';
+import { actType } from 'utils/constants';
 import styles from 'styles/Form.module.css';
 
 interface Props {

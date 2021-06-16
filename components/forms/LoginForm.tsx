@@ -2,7 +2,7 @@ import { useState, SyntheticEvent, ChangeEventHandler } from 'react';
 import { NextPage } from 'next';
 import { notifyError } from 'helper/notify';
 import { loginStructure } from 'utils/structures';
-import { FormValues } from 'constants_types/types';
+import { FormValues } from 'interfaces';
 
 interface Props {
   handleSubmit: (values: FormValues) => void,
