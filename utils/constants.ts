@@ -17,3 +17,8 @@ export const FETCH_METHODS = Object.freeze({
   get: 'GET',
   post: 'POST',
 });
+
+export const COOKIES_ACTIONS = Object.freeze({
+  set: 'set',
+  destroy: 'destroy',
+});

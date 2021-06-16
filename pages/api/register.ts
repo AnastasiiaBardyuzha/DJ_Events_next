@@ -1,8 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import cookie from 'cookie';
 import axiosInstance from 'api';
-import { isDevelopmentMode } from 'helper/isDevelopmentMode';
-import { FETCH_METHODS } from 'utils/constants';
+import { actionWithCookies } from 'helper/cookies';
+import { FETCH_METHODS, COOKIES_ACTIONS } from 'utils/constants';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === FETCH_METHODS.post) {
@@ -17,13 +16,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
       // Set cookie
 
-      res.setHeader('Set-Cookie', cookie.serialize('token', String(data.jwt), {
-        httpOnly: true,
-        secure: !isDevelopmentMode(), // secure work only in production
-        maxAge: 60 * 60 * 24 * 7, // 1 week
-        sameSite: 'strict',
-        path: '/', // for everywhere
-      }));
+      actionWithCookies({
+        act: COOKIES_ACTIONS.set,
+        res,
+        token: data.jwt,
+      });
 
       res.status(200).json({ user: data.user });
     } catch (error) {

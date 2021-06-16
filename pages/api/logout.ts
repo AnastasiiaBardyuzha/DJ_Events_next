@@ -1,22 +1,16 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import cookie from 'cookie';
-import { isDevelopmentMode } from 'helper/isDevelopmentMode';
-import { FETCH_METHODS } from 'utils/constants';
+import { actionWithCookies } from 'helper/cookies';
+import { FETCH_METHODS, COOKIES_ACTIONS } from 'utils/constants';
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === FETCH_METHODS.post) {
 
     // Destroy cookie
 
-    res.setHeader(
-      'Set-Cookie',
-      cookie.serialize('token', '', {
-      httpOnly: true,
-      secure: !isDevelopmentMode(), // secure work only in production
-      expires: new Date(0),
-      sameSite: 'strict',
-      path: '/', // for everywhere
-    }));
+    actionWithCookies({
+      act: COOKIES_ACTIONS.destroy,
+      res,
+    });
 
     res.
     status(200).json({ message: 'Success' });
