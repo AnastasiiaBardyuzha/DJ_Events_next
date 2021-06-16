@@ -1,7 +1,7 @@
 import { FaSignInAlt, FaSignOutAlt } from 'react-icons/fa';
 import CustomLink from 'components/common/CustomLink';
 import { useAuth } from 'context/AuthContext';
-import Search from 'components/Search';
+import Search from 'components/forms/Search';
 import styles from '../styles/Header.module.css';
 
 const Header = () => {
