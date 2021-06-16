@@ -47,11 +47,11 @@ export const getServerSideProps = async (
 
   // get total/count
 
-  const resTotal = await axiosInstance('/events/count');
+  const resTotal = await axiosInstance.get('/events/count');
 
   // get events
 
-  const resEvents = await axiosInstance(
+  const resEvents = await axiosInstance.get(
     `/events?_sort=date:ASC&_limit=${PER_PAGE}&_start=${start}`,
   );
   

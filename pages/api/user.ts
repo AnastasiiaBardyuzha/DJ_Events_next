@@ -12,7 +12,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
    try {
     const {token} = cookie.parse(req.headers.cookie);
-    const strapiRes = await axiosInstance(
+    const strapiRes = await axiosInstance.get(
       '/users/me', {
         headers: {
           Authorization: `Bearer ${token}`,

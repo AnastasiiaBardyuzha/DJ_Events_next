@@ -27,7 +27,7 @@ interface Props {
 export default Home;
 
 export const getServerSideProps = async () => {
-  const res = await axiosInstance('/events?_sort=date:ASC&_limit=3');
+  const res = await axiosInstance.get('/events?_sort=date:ASC&_limit=3');
   
   return {
     props: {

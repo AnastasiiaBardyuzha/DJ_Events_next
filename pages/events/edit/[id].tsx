@@ -64,7 +64,7 @@ const EditEvent: NextPage<Props> = ({
   };
 
   const imageUploaded = async () => {
-    const res = await axiosInstance(`/events/${eventItem.id}`);
+    const res = await axiosInstance.get(`/events/${eventItem.id}`);
     const { data } = res;
 
     setImagePreview(
@@ -137,7 +137,7 @@ export const getServerSideProps = async (
   }: ServerSideProps,
 ) => {
   const { token } = parseCookies(req);
-  const res = await axiosInstance(`/events/?id=${id}`);
+  const res = await axiosInstance.get(`/events/?id=${id}`);
   
   return {
     props: {

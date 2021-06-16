@@ -73,7 +73,7 @@ export default EventPage;
 export const getServerSideProps = async (
   { query: { slug } }: ServerSideProps,
 ) => {
-  const res = await axiosInstance(`/events/?slug=${slug}`);
+  const res = await axiosInstance.get(`/events/?slug=${slug}`);
 
   return {
     props: {

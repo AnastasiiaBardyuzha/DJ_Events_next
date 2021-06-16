@@ -98,7 +98,7 @@ const AuthProvider: NextPage<Props> = ({ children }) => {
   // Check if user is logged in
   const checkUserLoggedIn =  async () => {
     try {
-      const res = await authAxiosInstance('/api/user');
+      const res = await authAxiosInstance.get('/api/user');
  
       setUser(res.data.user);
     } catch (er) {
