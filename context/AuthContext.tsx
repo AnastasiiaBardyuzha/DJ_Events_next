@@ -89,7 +89,7 @@ const AuthProvider: NextPage<Props> = ({ children }) => {
       await authAxiosInstance.post('/api/logout');
  
       setUser(null);
-      router.push('/');
+      router.replace('/');
     } catch (er) {
       notifyError();
     }
