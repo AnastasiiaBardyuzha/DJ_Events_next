@@ -1,4 +1,6 @@
-export const API_URL = process.env.NEXT_PUBLIC_APP_BACKEND_URL;
+export const API_URL = 
+  process.env.NEXT_PUBLIC_PRODUCTION_APP_BACKEND_URL 
+  || process.env.NEXT_PUBLIC_APP_BACKEND_URL;
 export const NEXT_URL = process.env.NEXT_PUBLIC_APP_FRONTEND_URL;
 
 interface actionType {
